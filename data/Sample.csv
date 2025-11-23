@@ -1,0 +1,6 @@
+Date,OrderID,Product,Quantity,UnitPrice,Customer
+2025-01-01,ORD0001,Soap,10,20.0,Alice
+2025-01-02,ORD0002,Shampoo,5,50.0,Bob
+2025-02-05,ORD0003,Soap,15,20.0,Carol
+2025-02-20,ORD0004,Accessory Z,2,100.0,Dave
+2025-03-01,ORD0005,Gadget X,3,150.0,Eve

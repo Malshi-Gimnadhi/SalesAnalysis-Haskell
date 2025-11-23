@@ -1,0 +1,20 @@
+name: sales-analysis-haskell
+version: 0.1.0.0
+library:
+  source-dirs: src
+  dependencies:
+    - base >= 4.9 && < 5
+    - text
+    - bytestring
+    - cassava
+    - time
+    - containers
+    - directory
+    - filepath
+    - threepenny-gui
+    - mtl
+executables:
+  sales-analysis:
+    main: Main.hs
+    source-dirs: app
+    ghc-options: -threaded -rtsopts -with-rtsopts=-N
