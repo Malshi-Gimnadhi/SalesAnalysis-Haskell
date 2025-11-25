@@ -8,23 +8,22 @@ module Analysis
 import Types
 import Data.Map.Strict (Map)
 import qualified Data.Map.Strict as Map
-import Data.Time (toGregorian, Day)
-import Data.Time.Calendar (toGregorian)
+import Data.Time (Day, toGregorian)
 import Data.List (foldl')
+import Data.Text (unpack)
 
 -- compute total revenue, total quantity and record count
 analyzeSales :: [Sale] -> (Double, Int, Int)
 analyzeSales sales =
-  let totals = foldl' accum (0.0, 0) sales
-      accum (rev, qty) s = (rev + fromIntegral (sQuantity s) * sUnitPrice s, qty + sQuantity s)
-      (rev, qty) = totals
+  let accum (rev, qty) s = (rev + fromIntegral (sQuantity s) * sUnitPrice s, qty + sQuantity s)
+      (rev, qty) = foldl' accum (0.0, 0) sales
   in (rev, qty, length sales)
 
 -- total amount per product
 salesByProduct :: [Sale] -> Map String Double
 salesByProduct =
   foldl' (\m s ->
-            let prod = show (sProduct s)
+            let prod = unpack (sProduct s)
                 amt  = fromIntegral (sQuantity s) * sUnitPrice s
             in Map.insertWith (+) prod amt m) Map.empty
 

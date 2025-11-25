@@ -13,6 +13,7 @@ import qualified Data.Vector as V
 import Data.Text (Text)
 import qualified Data.Text as T
 import Data.Maybe (fromMaybe)
+import Control.Applicative ((<|>))
 
 -- CSV intermediate row representation
 data Row = Row
@@ -61,10 +62,10 @@ parseSalesFile fp = do
   csv <- BL.readFile fp
   case decodeByName csv of
     Left err -> return $ Left ("CSV parse error: " ++ err)
-    Right (_, v :: Vector Row) -> do
-      let sales = V.toList $ V.map toSale v
-          successful = [s | Just s <- sales]
-          failed = length sales - length successful
+    Right (_, v) -> do
+      let maybeSales = V.toList $ V.map toSale v
+          successful = [s | Just s <- maybeSales]
+          failed = length maybeSales - length successful
       if null successful
         then return $ Left "No valid rows parsed (check Date format and headers)"
         else return $ Right successful

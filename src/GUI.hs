@@ -13,9 +13,10 @@ import qualified Data.Map.Strict as Map
 import Control.Monad.IO.Class (liftIO)
 import System.Process (callCommand)
 import System.FilePath (takeFileName)
+import System.Info (os)
 
--- Start GUI on port 8023 by default (Main sets this)
-startGUI :: T.Window -> IO ()
+-- Start GUI: the handler type is Window -> UI ()
+startGUI :: T.Window -> UI ()
 startGUI window = do
   T.setTitle "Sales Analysis (Haskell)"
   -- Build UI elements
@@ -62,21 +63,15 @@ startGUI window = do
         reportPath <- liftIO $ writeReport fp (rev, qty, rc) prodMap monthMap
         element resultArea # set text displayText
         element linkReport # set text ("Report written: " ++ reportPath)
+
   -- Open generated folder button
   on UI.click btnOpenFolder $ \_ -> liftIO $ do
-    -- best-effort attempt to open generated folder
+    -- simple OS detection
     let cmd =
-          if osIsWindows then "start generated"
-          else if osIsMac then "open generated"
+          if os == "mingw32" then "start generated"
+          else if os == "darwin" then "open generated"
           else "xdg-open generated || true"
     putStrLn $ "Opening generated folder with command: " ++ cmd
     -- try run; ignore failures
-    _ <- (callCommand cmd)
+    _ <- callCommand cmd
     return ()
-
--- very small OS detection
-osIsWindows :: Bool
-osIsWindows = False -- leave False; user can edit to True on Windows if desired
-
-osIsMac :: Bool
-osIsMac = False -- set True on macOS if you'd like the 'open' command behavior

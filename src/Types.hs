@@ -1,28 +1,16 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE DeriveGeneric #-}
 
-module Types
-  ( Sale(..)
-  , Summary(..)
-  ) where
+module Types where
 
-import GHC.Generics (Generic)
 import Data.Text (Text)
 import Data.Time (Day)
 
--- Sale record
-data Sale = Sale
-  { sDate     :: Day
-  , sOrderId  :: Maybe Text
-  , sProduct  :: Text
-  , sQuantity :: Int
-  , sUnitPrice:: Double
-  , sCustomer :: Maybe Text
-  } deriving (Show, Eq, Generic)
-
--- Summary to display / output
-data Summary = Summary
-  { totalRevenue   :: Double
-  , totalQuantity  :: Int
-  , recordCount    :: Int
+-- A simple Sale record used across the project
+data SaleRecord = SaleRecord
+  { orderId  :: Maybe Int
+  , customer :: Text
+  , item     :: Text
+  , quantity :: Int
+  , price    :: Double
+  , date     :: Day
   } deriving (Show, Eq)

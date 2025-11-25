@@ -1,3 +1,15 @@
 resolver: lts-20.18
 packages:
 - .
+extra-deps:
+- threepenny-gui-0.9.4.2@sha256:2e725905042fff5abd07ff32090eb252fd0863e5d9405593fd886401315edc87,8866
+- snap-core-1.0.5.1@sha256:0c2f6cbdf2ce5ebb7916444a2a421b185693732e4276a87e07dea40c552a8569,9820
+- snap-server-1.1.2.1@sha256:3ed4373b3bc4a0f2d59752557dfa0f4caf1a198322451350b7cf6ae757b7eb42,15464
+- websockets-snap-0.10.3.1@sha256:5509135788e095b585737e524a832f668a5356f3088f658800e0ff94e918afbd,1042
+- readable-0.3.1
+
+
+
+
+
+# The local package is referenced as an extra-dep directory in the project root.

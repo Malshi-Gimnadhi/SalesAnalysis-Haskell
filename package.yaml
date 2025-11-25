@@ -1,5 +1,6 @@
 name: sales-analysis-haskell
 version: 0.1.0.0
+
 library:
   source-dirs: src
   dependencies:
@@ -13,8 +14,19 @@ library:
     - filepath
     - threepenny-gui
     - mtl
+    - vector
+    - unordered-containers
+
+
+
+
+
+
 executables:
   sales-analysis:
     main: Main.hs
     source-dirs: app
     ghc-options: -threaded -rtsopts -with-rtsopts=-N
+    dependencies:
+      - sales-analysis-haskell
+      - threepenny-gui
