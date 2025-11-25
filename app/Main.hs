@@ -5,7 +5,7 @@ import GUI (startGUI)
 
 main :: IO ()
 main = do
-  let config = T.defaultConfig { T.tpPort = 8023 }
+  let config = T.defaultConfig { T.jsPort = Just 8023 }
   putStrLn "Starting Sales Analysis GUI on http://localhost:8023"
   -- call the library startGUI (qualified) with the GUI.startGUI handler
   T.startGUI config GUI.startGUI
