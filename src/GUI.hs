@@ -4,13 +4,14 @@ module GUI
   ) where
 
 import qualified Graphics.UI.Threepenny as T
-import Graphics.UI.Threepenny.Core
+import Graphics.UI.Threepenny.Core hiding (startGUI)
 import Parser
 import Analysis
 import Report
 import Types
 import qualified Data.Map.Strict as Map
 import Control.Monad.IO.Class (liftIO)
+import Control.Monad (void)
 import System.Process (callCommand)
 import System.FilePath (takeFileName)
 import System.Info (os)
@@ -18,7 +19,7 @@ import System.Info (os)
 -- Start GUI: the handler type is Window -> UI ()
 startGUI :: T.Window -> UI ()
 startGUI window = do
-  T.setTitle "Sales Analysis (Haskell)"
+  void $ return window # set T.title "Sales Analysis (Haskell)"
   -- Build UI elements
   inputPath <- T.input # set (attr "placeholder") "Enter path to CSV (e.g. data/sample.csv)"
   btnAnalyze <- T.button #+ [string "Load & Analyze"]
@@ -31,26 +32,29 @@ startGUI window = do
     , element inputPath
     , element btnAnalyze
     , element btnOpenFolder
-    , hr
+    , T.hr
     , element resultArea
-    , hr
+    , T.hr
     , element linkReport
     ]
     ]
 
   -- Button actions
-  on UI.click btnAnalyze $ \_ -> do
+  on T.click btnAnalyze $ \_ -> do
     fp <- get value inputPath
     liftIO $ putStrLn $ "Analyzing: " ++ fp
     res <- liftIO $ parseSalesFile fp
     case res of
       Left err -> element resultArea # set text ("Error parsing CSV: " ++ err)
-      Right sales -> do
+      Right (sales, failedCount) -> do
         let (rev, qty, rc) = analyzeSales sales
             prodMap = salesByProduct sales
             monthMap = salesByMonth sales
+            rowsInfo = "Rows parsed: " ++ show rc ++ ", failed: " ++ show failedCount
             summaryStr = unlines
-              [ "Overview:"
+              [ rowsInfo
+              , ""
+              , "Overview:"
               , " Total Revenue: " ++ show rev
               , " Total Quantity: " ++ show qty
               , " Records: " ++ show rc
@@ -60,12 +64,17 @@ startGUI window = do
             monthLines = map (\(m,v) -> "  " ++ m ++ " : " ++ show v) (reverse $ Map.toList monthMap)
             displayText = summaryStr ++ "\nTop Products:\n" ++ unlines prodLines ++ "\nSales by Month:\n" ++ unlines monthLines
         -- write report
-        reportPath <- liftIO $ writeReport fp (rev, qty, rc) prodMap monthMap
-        element resultArea # set text displayText
-        element linkReport # set text ("Report written: " ++ reportPath)
+        reportResult <- liftIO $ writeReport fp (rev, qty, rc) prodMap monthMap
+        case reportResult of
+          Left writeErr -> do
+            element resultArea # set text (displayText ++ "\n\nError writing report: " ++ writeErr)
+            element linkReport # set text ""
+          Right reportPath -> do
+            element resultArea # set text displayText
+            element linkReport # set text ("Report written: " ++ reportPath)
 
   -- Open generated folder button
-  on UI.click btnOpenFolder $ \_ -> liftIO $ do
+  on T.click btnOpenFolder $ \_ -> liftIO $ do
     -- simple OS detection
     let cmd =
           if os == "mingw32" then "start generated"

@@ -1,6 +1,9 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Types where
+module Types
+  ( SaleRecord(..)
+  , Sale(..)
+  ) where
 
 import Data.Text (Text)
 import Data.Time (Day)
@@ -13,4 +16,14 @@ data SaleRecord = SaleRecord
   , quantity :: Int
   , price    :: Double
   , date     :: Day
+  } deriving (Show, Eq)
+
+-- Sale type used by Parser, Analysis, and GUI
+data Sale = Sale
+  { sDate      :: !Day
+  , sOrderId   :: !(Maybe Text)
+  , sProduct   :: !Text
+  , sQuantity  :: !Int
+  , sUnitPrice :: !Double
+  , sCustomer  :: !(Maybe Text)
   } deriving (Show, Eq)

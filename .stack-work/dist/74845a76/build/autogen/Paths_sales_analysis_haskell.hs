@@ -43,7 +43,7 @@ getBinDir, getLibDir, getDynLibDir, getDataDir, getLibexecDir, getSysconfDir :: 
 
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
 bindir     = "C:\\Users\\ASUS\\Desktop\\SalesAnalysis-Haskell\\.stack-work\\install\\50bb050f\\bin"
-libdir     = "C:\\Users\\ASUS\\Desktop\\SalesAnalysis-Haskell\\.stack-work\\install\\50bb050f\\lib\\x86_64-windows-ghc-9.2.7\\sales-analysis-haskell-0.1.0.0-Hd5yuTWuwk31exEtj8MvPz"
+libdir     = "C:\\Users\\ASUS\\Desktop\\SalesAnalysis-Haskell\\.stack-work\\install\\50bb050f\\lib\\x86_64-windows-ghc-9.2.7\\sales-analysis-haskell-0.1.0.0-AyTscpRhOCIJRY3wx6GWVN"
 dynlibdir  = "C:\\Users\\ASUS\\Desktop\\SalesAnalysis-Haskell\\.stack-work\\install\\50bb050f\\lib\\x86_64-windows-ghc-9.2.7"
 datadir    = "C:\\Users\\ASUS\\Desktop\\SalesAnalysis-Haskell\\.stack-work\\install\\50bb050f\\share\\x86_64-windows-ghc-9.2.7\\sales-analysis-haskell-0.1.0.0"
 libexecdir = "C:\\Users\\ASUS\\Desktop\\SalesAnalysis-Haskell\\.stack-work\\install\\50bb050f\\libexec\\x86_64-windows-ghc-9.2.7\\sales-analysis-haskell-0.1.0.0"

@@ -1,14 +1,20 @@
+C:\Users\ASUS\Desktop\SalesAnalysis-Haskell\.stack-work\dist\74845a76\build\autogen\Paths_sales_analysis_haskell.hs:
+  hash: 68cb2d57d4900acf09e3d1a7ac1d1102fa6bda2f107a1fe9657dadc61c737c0a
+C:\Users\ASUS\Desktop\SalesAnalysis-Haskell\.stack-work\dist\74845a76\build\autogen\cabal_macros.h:
+  hash: 6fe3ef551c6b45b67f0e1f7657c27eafc020c41df5f3706b21c4d22035c29461
 C:\Users\ASUS\Desktop\SalesAnalysis-Haskell\package.yaml:
-  hash: 41f7a96e69daebfa0e88d4805547bf496194d9740901cbd2a75df002082d75bb
+  hash: 8dd62a621d0e9defba4ffb22cb1895e7cfe9a83cb29ca31a206091f9709c84fe
 C:\Users\ASUS\Desktop\SalesAnalysis-Haskell\sales-analysis-haskell.cabal:
-  hash: e9c479885bc023d2ffb6df6a826e01d5a6426be4799efecfb3cef34ddbc78f1c
+  hash: dadd4409dcab4f0e5e8d4497d9df919523c043bc01c1a2d81c28a7edae206143
 C:\Users\ASUS\Desktop\SalesAnalysis-Haskell\src\Analysis.hs:
   hash: be11fecc3f0631406f0c01603e4ec9829e5293e4404df85c6403ff26ccec2054
 C:\Users\ASUS\Desktop\SalesAnalysis-Haskell\src\GUI.hs:
-  hash: 4429900f1f39604b7defd8c49837055e6e7a7766e18d57bc947b9d6dd5481be4
+  hash: d20e0b3cd95bc5a46821d3a83a0283d936f8c52dafa3f3fcd5333433a1563bd2
 C:\Users\ASUS\Desktop\SalesAnalysis-Haskell\src\Parser.hs:
-  hash: 4790c4cb850d5989fc248fdf189172bbc902f52c1ec6eaaa083e79089a8919c3
+  hash: fd26500b48bf2fad0d066f0af221fb37cb33bbbb593227d8e2d06b41c2eed270
 C:\Users\ASUS\Desktop\SalesAnalysis-Haskell\src\Report.hs:
-  hash: 276383cf60866f37fa6a92f79fdf7800f813e9984f93e1ca4f951a46a86ade1a
+  hash: 70d09f736a3dc37f992407226299e4bd2e617ad7708c0db90ec2fad4b19d1310
 C:\Users\ASUS\Desktop\SalesAnalysis-Haskell\src\Types.hs:
-  hash: f87b12b7d68a8cf6fd17f25c75b90f5ab557aba188beeaae8e5c5d02e22b8df4
+  hash: 02a61d929ce6e0c1591e1a42d180fe61986e99e9daf37091820d6d99802029f4
+C:\ghcup\ghc\9.2.7\lib\x86_64-windows-ghc-9.2.7\rts-1.0.2\include\ghcversion.h:
+  hash: 29d6607e92f065af06096e2cf6677b816f36cb00b9c9cf137b6a887fe0a21ffd

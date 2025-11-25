@@ -27,6 +27,7 @@ library
     , directory
     , filepath
     , mtl
+    , process
     , text
     , threepenny-gui
     , time
@@ -42,6 +43,7 @@ executable sales-analysis
       app
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      sales-analysis-haskell
+      base >=4.9 && <5
+    , sales-analysis-haskell
     , threepenny-gui
   default-language: Haskell2010

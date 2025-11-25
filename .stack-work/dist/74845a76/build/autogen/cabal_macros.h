@@ -80,6 +80,16 @@
   (major1) == 2 && (major2) <  2 || \
   (major1) == 2 && (major2) == 2 && (minor) <= 2)
 #endif /* MIN_VERSION_mtl */
+/* package process-1.6.16.0 */
+#ifndef VERSION_process
+#define VERSION_process "1.6.16.0"
+#endif /* VERSION_process */
+#ifndef MIN_VERSION_process
+#define MIN_VERSION_process(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  6 || \
+  (major1) == 1 && (major2) == 6 && (minor) <= 16)
+#endif /* MIN_VERSION_process */
 /* package text-1.2.5.0 */
 #ifndef VERSION_text
 #define VERSION_text "1.2.5.0"
@@ -213,10 +223,10 @@
 #endif /* MIN_TOOL_VERSION_strip */
 
 #ifndef CURRENT_PACKAGE_KEY
-#define CURRENT_PACKAGE_KEY "sales-analysis-haskell-0.1.0.0-Hd5yuTWuwk31exEtj8MvPz"
+#define CURRENT_PACKAGE_KEY "sales-analysis-haskell-0.1.0.0-AyTscpRhOCIJRY3wx6GWVN"
 #endif /* CURRENT_packageKey */
 #ifndef CURRENT_COMPONENT_ID
-#define CURRENT_COMPONENT_ID "sales-analysis-haskell-0.1.0.0-Hd5yuTWuwk31exEtj8MvPz"
+#define CURRENT_COMPONENT_ID "sales-analysis-haskell-0.1.0.0-AyTscpRhOCIJRY3wx6GWVN"
 #endif /* CURRENT_COMPONENT_ID */
 #ifndef CURRENT_PACKAGE_VERSION
 #define CURRENT_PACKAGE_VERSION "0.1.0.0"
