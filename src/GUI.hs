@@ -11,6 +11,7 @@ import Report
 import Types
 import qualified Data.Map.Strict as Map
 import Control.Monad.IO.Class (liftIO)
+import Control.Monad (void)
 import System.Process (callCommand)
 import System.FilePath (takeFileName)
 import System.Info (os)
@@ -18,7 +19,7 @@ import System.Info (os)
 -- Start GUI: the handler type is Window -> UI ()
 startGUI :: T.Window -> UI ()
 startGUI window = do
-  return window # set T.title "Sales Analysis (Haskell)"
+  void $ return window # set T.title "Sales Analysis (Haskell)"
   -- Build UI elements
   inputPath <- T.input # set (attr "placeholder") "Enter path to CSV (e.g. data/sample.csv)"
   btnAnalyze <- T.button #+ [string "Load & Analyze"]

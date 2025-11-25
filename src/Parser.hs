@@ -28,11 +28,14 @@ data Row = Row
   } deriving Show
 
 -- Optional field lookup for cassava
+-- Note: Implementing custom .:? since cassava's version may not be available in all versions
 (.:?) :: FromField a => NamedRecord -> Name -> Parser (Maybe a)
 m .:? name = case HM.lookup name m of
   Nothing -> pure Nothing
   Just bs -> optional (parseField bs)
 
+-- Parse CSV records matching the data/Sample.csv format
+-- Columns: Date, OrderID, Customer, Item, Quantity, Price
 instance FromNamedRecord Row where
   parseNamedRecord m = Row
     <$> m .: "Date"
